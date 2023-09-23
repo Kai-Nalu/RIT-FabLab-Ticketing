@@ -1,0 +1,2 @@
+class MProcess < ApplicationRecord
+end
