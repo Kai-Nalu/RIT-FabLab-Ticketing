@@ -1,5 +1,5 @@
 current directory: /Users/kainalu/Documents/GitHub/RITFabLabTicketing/vendor/bundle/ruby/3.1.0/gems/nio4r-2.5.9/ext/nio4r
-/Users/kainalu/.rbenv/versions/3.1.2/bin/ruby -I /Users/kainalu/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20230913-22070-4qno2y.rb extconf.rb
+/Users/kainalu/.rbenv/versions/3.1.2/bin/ruby -I /Users/kainalu/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20230927-91355-uurhn1.rb extconf.rb
 checking for unistd.h... yes
 checking for linux/aio_abi.h... no
 checking for linux/io_uring.h... no
@@ -290,4 +290,4 @@ ld: warning: -undefined dynamic_lookup may not work with chained fixups
 
 current directory: /Users/kainalu/Documents/GitHub/RITFabLabTicketing/vendor/bundle/ruby/3.1.0/gems/nio4r-2.5.9/ext/nio4r
 make DESTDIR\= install
-/usr/bin/install -c -m 0755 nio4r_ext.bundle ./.gem.20230913-22070-7zecxl
+/usr/bin/install -c -m 0755 nio4r_ext.bundle ./.gem.20230927-91355-qojplx

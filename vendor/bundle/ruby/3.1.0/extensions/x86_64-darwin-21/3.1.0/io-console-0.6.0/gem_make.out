@@ -1,5 +1,5 @@
 current directory: /Users/kainalu/Documents/GitHub/RITFabLabTicketing/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
-/Users/kainalu/.rbenv/versions/3.1.2/bin/ruby -I /Users/kainalu/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20230913-22070-pjy3ua.rb extconf.rb
+/Users/kainalu/.rbenv/versions/3.1.2/bin/ruby -I /Users/kainalu/.rbenv/versions/3.1.2/lib/ruby/3.1.0 -r ./siteconf20230927-91355-nvddtj.rb extconf.rb
 checking for termios.h... yes
 checking for cfmakeraw() in termios.h... yes
 checking for sys/ioctl.h... yes
@@ -17,4 +17,4 @@ ld: warning: -undefined dynamic_lookup may not work with chained fixups
 
 current directory: /Users/kainalu/Documents/GitHub/RITFabLabTicketing/vendor/bundle/ruby/3.1.0/gems/io-console-0.6.0/ext/io/console
 make DESTDIR\= install
-/usr/bin/install -c -m 0755 console.bundle ./.gem.20230913-22070-qv54t0/io
+/usr/bin/install -c -m 0755 console.bundle ./.gem.20230927-91355-9yuvnt/io
