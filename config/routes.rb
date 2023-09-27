@@ -3,4 +3,8 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get "/settings/m_processes", to: "m_processes#index", as: "m_processes_settings"
+
+  resources :m_processes
 end
