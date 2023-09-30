@@ -1,4 +1,6 @@
 class MProcessesController < ApplicationController
+	layout "settings"
+
 	def index
 		@m_processes = MProcess.all
 	end
