@@ -12,7 +12,7 @@
 				<% @m_processes.each do |m_process| %>
 					<tr>
 						<td class="text-center">
-							<i class="bi <%= m_process.is_active ? "bi-check-circle" : "bi-slash-circle" %>"></i>
+							<i class="bi <%= m_process.is_active ? "bi-check-circle text-success" : "bi-slash-circle text-danger" %>"></i>
 						</td>
 						<td><%= m_process.name %></td>
 						<td>
