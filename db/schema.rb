@@ -10,12 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2) do
+ActiveRecord::Schema[7.0].define(version: 3) do
   create_table "m_processes", force: :cascade do |t|
     t.string "name"
     t.boolean "is_active"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "machines", force: :cascade do |t|
+    t.string "name"
+    t.float "time_cost"
+    t.integer "m_process_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["m_process_id"], name: "index_machines_on_m_process_id"
   end
 
   create_table "statuses", force: :cascade do |t|
@@ -25,4 +34,5 @@ ActiveRecord::Schema[7.0].define(version: 2) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "machines", "m_processes"
 end

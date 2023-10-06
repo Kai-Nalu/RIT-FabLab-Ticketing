@@ -1,0 +1,68 @@
+<% if @m_processes.count > 0 %>
+	<div class="container m-3">
+		<div class="accordion">
+			<% @m_processes.each do |m_process| %>
+				<div class="accordion-item">
+					<h2 class="accordion-header">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#MProcessMachineTable-<%= m_process.id %>" aria-controls="#MProcessMachineTable-<%= m_process.id %>" aria-expanded="false">
+							<%= m_process.name %>
+						</button>
+					</h2>
+					<div id="MProcessMachineTable-<%= m_process.id %>" class="accordion-collapse collapse">
+						<div class="accordion-body">
+							<% if m_process.machines.count > 0 %>
+								<table class="table table-hover">
+									<thead>
+										<tr>
+											<th scope="col">Name</th>
+											<th scope="col">Cost</th>
+											<th scope="col"></th>
+										</tr>
+									</thead>
+									<tbody>
+										<% m_process.machines.each do |machine| %>
+											<tr>
+												<td><%= machine.name %></td>
+												<td>$<%= machine.time_cost %>/hr</td>
+												<td>
+													<div class="btn-group">
+														<a class="btn btn-primary" href="<%= edit_machine_path(machine) %>">
+															<i class="bi bi-pencil-square"></i>
+														</a>
+														<a class="btn btn-danger" href="<%= machine_path(machine) %>" data-turbo-method="delete" data-turbo-confirm="Are you sure?">
+															<i class="bi bi-trash"></i>
+														</a>
+													</div>
+												</td>
+											</tr>
+										<% end %>
+									</tbody>
+									<tfoot>
+										<tr>
+											<td colspan="3">
+												<a class="btn btn-success" href="<%= new_machine_path(m_process_id: m_process) %>">
+													<i class="bi bi-plus-circle-fill"></i> Machine
+												</a>
+											</td>
+										</tr>
+									</tfoot>
+								</table>
+							<% else %>
+								<a class="btn btn-success" href="<%= new_machine_path(m_process_id: m_process) %>">
+									<i class="bi bi-plus-circle-fill"></i> Machine
+								</a>
+							<% end %>
+						</div>
+					</div>
+				</div>
+			<% end %>
+		</div>
+	</div>
+<% else %>
+	<div class="container">
+		No MProcess made yet<br>
+		<a class="btn btn-primary" href="<%= m_processes_settings_path %>">
+			MProcess Settings
+		</a>
+	</div>
+<% end %>

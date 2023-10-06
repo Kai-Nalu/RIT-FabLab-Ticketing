@@ -6,9 +6,11 @@ Rails.application.routes.draw do
 
   get "/settings/m_processes", to: "m_processes#index", as: "m_processes_settings"
   get "/settings/statuses", to: "statuses#index", as: "statuses_settings"
+  get "/settings/machines", to: "machines#index", as: "machines_settings"
 
   resources :m_processes
   resources :statuses
+  resources :machines
 
   put "/update/sortable_table", to: "update#sortable_table"
 end
