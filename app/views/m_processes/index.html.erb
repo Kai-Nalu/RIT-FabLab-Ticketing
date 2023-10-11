@@ -12,11 +12,11 @@
 		<tbody>
 			<% @m_processes.each do |m_process| %>
 				<tr>
-					<td class="text-center">
+					<td class="text-center align-middle">
 						<i class="bi <%= m_process.is_active ? "bi-check-circle text-success" : "bi-slash-circle text-danger" %>"></i>
 					</td>
-					<td><%= m_process.name %></td>
-					<td><%= number_to_currency m_process.time_cost %>/hr</td>
+					<td class="align-middle"><%= m_process.name %></td>
+					<td class="align-middle"><%= number_to_currency m_process.time_cost %>/hr</td>
 					<td>
 						<div class="btn-group">
 							<a class="btn btn-primary" href="<%= edit_m_process_path(m_process) %>">

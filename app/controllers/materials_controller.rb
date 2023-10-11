@@ -47,7 +47,6 @@ class MaterialsController < ApplicationController
 			params.require(:material).permit(
 				:name,
 				:in_stock,
-				:units,
 				:quantity_cost,
 			    :m_process_id
 			)

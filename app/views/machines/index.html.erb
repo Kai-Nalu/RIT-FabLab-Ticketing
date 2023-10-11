@@ -21,7 +21,7 @@
 								<tbody>
 									<% m_process.machines.each do |machine| %>
 										<tr>
-											<td><%= machine.name %></td>
+											<td class="align-middle"><%= machine.name %></td>
 											<td>
 												<div class="btn-group">
 													<a class="btn btn-primary" href="<%= edit_machine_path(machine) %>">
@@ -37,7 +37,7 @@
 								</tbody>
 								<tfoot>
 									<tr>
-										<td colspan="3">
+										<td colspan="2">
 											<a class="btn btn-success" href="<%= new_machine_path(m_process_id: m_process) %>">
 												<i class="bi bi-plus-circle-fill"></i> Machine
 											</a>

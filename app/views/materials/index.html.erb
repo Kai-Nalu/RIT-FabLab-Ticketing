@@ -23,11 +23,11 @@
 								<tbody>
 									<% m_process.materials.each do |material| %>
 										<tr>
-											<td class="text-center">
+											<td class="text-center align-middle">
 												<i class="bi <%= material.in_stock ? "bi-check-circle text-success" : "bi-slash-circle text-danger" %>"></i>
 											</td>
-											<td><%= material.name %></td>
-											<td><%= number_to_currency material.quantity_cost %>/<%= material.m_process.units %></td>
+											<td class="align-middle"><%= material.name %></td>
+											<td class="align-middle"><%= number_to_currency material.quantity_cost %>/<%= material.m_process.units %></td>
 											<td>
 												<div class="btn-group">
 													<a class="btn btn-primary" href="<%= edit_material_path(material) %>">
