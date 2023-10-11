@@ -8,6 +8,7 @@ import "./jquery-ui"
 
 $(document).on('ready turbo:load', function() {
 	initSortableTables();
+	initFChildren();
 });
 
 function initSortableTables() {
@@ -35,4 +36,13 @@ async function updateSortableTableDatabase(event, ui) {
 	if (!fetch_success) {
 		sortable_table.sortable('cancel');
 	}
+}
+
+function initFChildren() {
+	$('.fchild').each(function() {
+		child = $(this);
+		$(`#${child.attr('fparent')}`).on("change", function() {
+			child.text($(this).val());
+		});
+	});
 }

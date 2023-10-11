@@ -46,7 +46,6 @@ class MachinesController < ApplicationController
 		def machine_params
 			params.require(:machine).permit(
 				:name,
-			    :time_cost,
 			    :m_process_id
 			)
 		end

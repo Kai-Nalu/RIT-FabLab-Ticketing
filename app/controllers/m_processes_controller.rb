@@ -44,7 +44,9 @@ class MProcessesController < ApplicationController
 		def m_process_params
 			params.require(:m_process).permit(
 				:name,
-			    :is_active
+			    :is_active,
+			    :units,
+			    :time_cost
 			)
 		end
 end

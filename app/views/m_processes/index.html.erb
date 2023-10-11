@@ -1,49 +1,48 @@
+<h2>MProcesses</h2>
 <% if @m_processes.count > 0 %>
-	<div class="container m-3">
-		<table class="table table-hover">
-			<thead>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col" width="72" class="text-center">Status</th>
+				<th scope="col">Name</th>
+				<th scope="col">Cost</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @m_processes.each do |m_process| %>
 				<tr>
-					<th scope="col" width="72" class="text-center">Status</th>
-					<th scope="col">Name</th>
-					<th scope="col"></th>
-				</tr>
-			</thead>
-			<tbody>
-				<% @m_processes.each do |m_process| %>
-					<tr>
-						<td class="text-center">
-							<i class="bi <%= m_process.is_active ? "bi-check-circle text-success" : "bi-slash-circle text-danger" %>"></i>
-						</td>
-						<td><%= m_process.name %></td>
-						<td>
-							<div class="btn-group">
-								<a class="btn btn-primary" href="<%= edit_m_process_path(m_process) %>">
-									<i class="bi bi-pencil-square"></i>
-								</a>
-								<a class="btn btn-danger" href="<%= m_process_path(m_process) %>" data-turbo-method="delete" data-turbo-confirm="Are you sure?">
-									<i class="bi bi-trash"></i>
-								</a>
-							</div>
-						</td>
-					</tr>
-				<% end %>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="3">
-						<a class="btn btn-success" href="<%= new_m_process_path %>">
-							<i class="bi bi-plus-circle-fill"></i> MProcess
-						</a>
+					<td class="text-center">
+						<i class="bi <%= m_process.is_active ? "bi-check-circle text-success" : "bi-slash-circle text-danger" %>"></i>
+					</td>
+					<td><%= m_process.name %></td>
+					<td><%= number_to_currency m_process.time_cost %>/hr</td>
+					<td>
+						<div class="btn-group">
+							<a class="btn btn-primary" href="<%= edit_m_process_path(m_process) %>">
+								<i class="bi bi-pencil-square"></i>
+							</a>
+							<a class="btn btn-danger" href="<%= m_process_path(m_process) %>" data-turbo-method="delete" data-turbo-confirm="Are you sure?">
+								<i class="bi bi-trash"></i>
+							</a>
+						</div>
 					</td>
 				</tr>
-			</tfoot>
-		</table>
-	</div>
+			<% end %>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="4">
+					<a class="btn btn-success" href="<%= new_m_process_path %>">
+						<i class="bi bi-plus-circle-fill"></i> MProcess
+					</a>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
 <% else %>
-	<div class="container">
-		No machine processes made yet<br>
-		<a class="btn btn-success" href="<%= new_m_process_path %>">
-			<i class="bi bi-plus-circle-fill"></i> MProcess
-		</a>
-	</div>
+	No machine processes made yet<br>
+	<a class="btn btn-success" href="<%= new_m_process_path %>">
+		<i class="bi bi-plus-circle-fill"></i> MProcess
+	</a>
 <% end %>

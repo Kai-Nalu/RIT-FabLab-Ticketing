@@ -1,49 +1,46 @@
+<h2>Statuses</h2>
 <% if @statuses.count > 0 %>
-	<div class="container m-3">
-		<table class="table table-hover">
-			<thead>
-				<tr>
-					<th scope="col" width="32"></th>
-					<th scope="col">Name</th>
-					<th scope="col"></th>
-				</tr>
-			</thead>
-			<tbody class="table-sortable">
-				<% @statuses.each do |status| %>
-					<tr id="status_<%= status.id %>">
-						<td class="text-center">
-							<i class="bi bi-grip-horizontal table-sortable-handle"></i>
-						</td>
-						<td><%= status.name %></td>
-						<td>
-							<div class="btn-group">
-								<a class="btn btn-primary" href="<%= edit_status_path(status) %>">
-									<i class="bi bi-pencil-square"></i>
-								</a>
-								<a class="btn btn-danger" href="<%= status_path(status) %>" data-turbo-method="delete" data-turbo-confirm="Are you sure?">
-									<i class="bi bi-trash"></i>
-								</a>
-							</div>
-						</td>
-					</tr>
-				<% end %>
-			</tbody>
-			<tfoot>
-				<tr>
-					<td colspan="3">
-						<a class="btn btn-success" href="<%= new_status_path %>">
-							<i class="bi bi-plus-circle-fill"></i> Status
-						</a>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col" width="32"></th>
+				<th scope="col">Name</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody class="table-sortable">
+			<% @statuses.each do |status| %>
+				<tr id="status_<%= status.id %>">
+					<td class="text-center">
+						<i class="bi bi-grip-horizontal table-sortable-handle"></i>
+					</td>
+					<td><%= status.name %></td>
+					<td>
+						<div class="btn-group">
+							<a class="btn btn-primary" href="<%= edit_status_path(status) %>">
+								<i class="bi bi-pencil-square"></i>
+							</a>
+							<a class="btn btn-danger" href="<%= status_path(status) %>" data-turbo-method="delete" data-turbo-confirm="Are you sure?">
+								<i class="bi bi-trash"></i>
+							</a>
+						</div>
 					</td>
 				</tr>
-			</tfoot>
-		</table>
-	</div>
+			<% end %>
+		</tbody>
+		<tfoot>
+			<tr>
+				<td colspan="3">
+					<a class="btn btn-success" href="<%= new_status_path %>">
+						<i class="bi bi-plus-circle-fill"></i> Status
+					</a>
+				</td>
+			</tr>
+		</tfoot>
+	</table>
 <% else %>
-	<div class="container">
-		No statuses made yet<br>
-		<a class="btn btn-success" href="<%= new_status_path %>">
-			<i class="bi bi-plus-circle-fill"></i> Status
-		</a>
-	</div>
+	No statuses made yet<br>
+	<a class="btn btn-success" href="<%= new_status_path %>">
+		<i class="bi bi-plus-circle-fill"></i> Status
+	</a>
 <% end %>
