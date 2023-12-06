@@ -1,0 +1,28 @@
+<h2>Workflows</h2>
+<% if @m_processes.count > 0 %>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th scope="col">Name</th>
+				<th scope="col"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<% @m_processes.each do |m_process| %>
+				<tr>
+					<td class="align-middle"><%= m_process.name %> Workflow</td>
+					<td>
+						<a class="btn btn-primary" href="<%= edit_workflow_path(m_process.workflow) %>">
+							<i class="bi bi-pencil-square"></i>
+						</a>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% else %>
+	No machine processes made yet<br>
+	<a class="btn btn-primary" href="<%= m_processes_settings_path %>">
+		MProcess Settings
+	</a>
+<% end %>

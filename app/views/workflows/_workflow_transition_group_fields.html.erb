@@ -1,0 +1,40 @@
+<div class="col-12 workflow-transition-group">
+	<div class="card">
+		<div class="card-body">
+			<div class="row g-3 align-items-center">
+				<div class="col-11">
+					<div class="form-floating">
+						<%= hidden_field_tag "#{f.object_name}[workflow_transition_groups_attributes][][id]", wtg_attributes&.fetch(:id, '') || '' %>
+						<%= text_field_tag "#{f.object_name}[workflow_transition_groups_attributes][][name]", wtg_attributes&.fetch(:name, '') || '', {class: "form-control", placeholder: ""} %>
+						<%= label_tag "#{f.object_name}[workflow_transition_groups_attributes][][name]", "Name", {class: "form-label"} %>
+					</div>
+				</div>
+				<div class="col-1">
+					<a href="#" class="btn btn-danger destroy-wtg"><i class="bi bi-trash"></i></a>
+					<%= hidden_field_tag "#{f.object_name}[workflow_transition_groups_attributes][][_destroy]", false %>
+				</div>
+				<div class="col-6">
+					<div class="d-grid dropdown">
+						<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">Initial Statuses</button>
+						<div class="dropdown-menu p-3">
+							<div class="row row-cols-1 row-cols-lg-2 g-3">
+								<% @statuses.each do |status| %>
+									<div class="col">
+										<%= check_box_tag :initial_status_ids, status.id, wtg_attributes&.fetch(:initial_status_ids, [])&.include?(status.id) || false, {name: "#{f.object_name}[workflow_transition_groups_attributes][][initial_status_ids][]"} %>
+										<%= f.label :initial_status_ids, status.name %>
+									</div>
+								<% end %>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-6">
+					<div class="form-floating">
+						<%= select_tag "#{f.object_name}[workflow_transition_groups_attributes][][target_status_id]", options_from_collection_for_select(@statuses, "id", "name", wtg_attributes&.fetch(:target_status_id, '') || ''), {class: "form-select"} %>
+						<%= f.label "#{f.object_name}[workflow_transition_groups_attributes][][target_status_id]", "Target Status", {class: "form-label"} %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

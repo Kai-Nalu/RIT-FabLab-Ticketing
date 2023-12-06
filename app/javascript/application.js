@@ -6,9 +6,14 @@ import * as bootstrap from "bootstrap"
 import "./add_jquery"
 import "./jquery-ui"
 
+import Cocooned from "@notus.sh/cocooned"
+
 $(document).on('ready turbo:load', function() {
+	Cocooned.start();
 	initSortableTables();
 	initFChildren();
+	initWTGDestroy();
+	initWTGAdd();
 });
 
 function initSortableTables() {
@@ -44,5 +49,23 @@ function initFChildren() {
 		$(`#${child.attr('fparent')}`).on("change", function() {
 			child.text($(this).val());
 		});
+	});
+}
+
+function initWTGDestroy() {
+	$('.destroy-wtg').on("click", function() {
+		$(this).next().val("true");
+		$(this).parents('.workflow-transition-group').hide('slow');
+		return false;
+	});
+}
+
+function initWTGAdd() {
+	$('.add-wtg').on("click", function() {
+		form_template = $(this).next().contents().clone().hide();
+		$(this).parent().before(form_template);
+		form_template.show('slow');
+		initWTGDestroy();
+		return false;
 	});
 }

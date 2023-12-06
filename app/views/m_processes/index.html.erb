@@ -41,8 +41,15 @@
 		</tfoot>
 	</table>
 <% else %>
-	No machine processes made yet<br>
-	<a class="btn btn-success" href="<%= new_m_process_path %>">
-		<i class="bi bi-plus-circle-fill"></i> MProcess
-	</a>
+	<% if @statuses.count < 1 %>
+		No statuses made yet<br>
+		<a class="btn btn-success" href="<%= new_status_path %>">
+			<i class="bi bi-plus-circle-fill"></i> Status
+		</a>
+	<% else %>
+		No machine processes made yet<br>
+		<a class="btn btn-success" href="<%= new_m_process_path %>">
+			<i class="bi bi-plus-circle-fill"></i> MProcess
+		</a>
+	<% end %>
 <% end %>

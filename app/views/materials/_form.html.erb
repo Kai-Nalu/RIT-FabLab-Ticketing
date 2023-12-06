@@ -2,9 +2,15 @@
 <%= form_with model: material do |f| %>
 	<div class="row g-3">
 		<div class="col-12">
-			<div class="form-floating">
-				<%= f.text_field :name, class: "form-control", placeholder: "" %>
-				<%= f.label :name, class: "form-label" %>
+			<div class="input-group">
+				<div class="form-floating">
+					<%= f.text_field :material_type_id, class: "form-control", placeholder: "" %>
+					<%= f.label :name, class: "form-label" %>
+				</div>
+				<div class="form-floating">
+					<%= f.text_field :name, class: "form-control", placeholder: "" %>
+					<%= f.label :name, class: "form-label" %>
+				</div>
 			</div>
 		</div>
 		<div class="col-2 align-self-center">

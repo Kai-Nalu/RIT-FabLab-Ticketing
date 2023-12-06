@@ -1,0 +1,2 @@
+module WorkflowTransitionGroupsHelper
+end

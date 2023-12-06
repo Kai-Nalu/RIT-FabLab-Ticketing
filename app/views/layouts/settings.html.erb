@@ -6,16 +6,19 @@
 					<a class="nav-link" href="#<%# #_settings_path %>">General</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link <%= 'active' if current_page?(m_processes_settings_path) %>" href="<%= m_processes_settings_path %>">MProcesses</a>
+					<a class="nav-link <%= 'active' if current_page?(statuses_settings_path) %>" href="<%= statuses_settings_path %>">Statuses</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link <%= 'active' if current_page?(statuses_settings_path) %>" href="<%= statuses_settings_path %>">Statuses</a>
+					<a class="nav-link <%= 'active' if current_page?(m_processes_settings_path) %>" href="<%= m_processes_settings_path %>">MProcesses</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link <%= 'active' if current_page?(machines_settings_path) %>" href="<%= machines_settings_path %>">Machines</a>
 				</li>
 				<li class="nav-item">
 					<a class="nav-link <%= 'active' if current_page?(materials_settings_path) %>" href="<%= materials_settings_path %>">Materials</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link <%= 'active' if current_page?(workflows_settings_path) %>" href="<%= workflows_settings_path %>">Workflows</a>
 				</li>
 			</ul>
 		</div>

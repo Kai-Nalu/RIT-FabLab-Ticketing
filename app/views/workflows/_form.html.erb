@@ -1,0 +1,38 @@
+<h3><%= m_process.name %> Workflow</h3>
+<%= form_with model: workflow_form, url: workflow_path(workflow_form.id), method: "patch", html: {autocomplete: "off"} do |f| %>
+	<%= f.hidden_field :id %>
+	<div class="row g-3">
+		<div class="col-12">
+			<div class="form-floating">
+				<%= f.select :default_status_id, statuses.map {|status| [status.name, status.id]}, {}, class: "form-select" %>
+				<%= f.label :default_status_id, class: "form-label" %>
+			</div>
+		</div>
+		<div class="col-12">
+			<fieldset class="card">
+				<h5 class="card-header">Transitions</h5>
+				<div class="card-body">
+					<div class="row g-3">
+						<% workflow_form.workflow_transition_groups_attributes.each do |wtg_attributes| %>
+							<%= render partial: "workflow_transition_group_fields", locals: {f: f, wtg_attributes: wtg_attributes} %>
+						<% end %>
+						<div class="col-12">
+							<a class="btn btn-success add-wtg" href="#">
+								<i class="bi bi-plus-circle-fill"></i> Transition
+							</a>
+							<template>
+								<%= render partial: "workflow_transition_group_fields", locals: {f: f, wtg_attributes: nil} %>
+							</template>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+		<div class="col-12">
+			<%= f.hidden_field :m_process_id, value: m_process.id %>
+			<%= f.submit "Update Workflow", class: "btn btn-primary" %>
+		</div>
+	</div>
+<% end %>
+
+<%# JUST REMOVE ALL ROW AND COL, THEY SHOULDN'T BE USED HERE AND MAYBE ELSEWHERE %>

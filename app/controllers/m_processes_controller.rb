@@ -3,6 +3,7 @@ class MProcessesController < ApplicationController
 
 	def index
 		@m_processes = MProcess.all
+		@statuses = Status.all
 	end
 
 	def new
@@ -11,6 +12,12 @@ class MProcessesController < ApplicationController
 
 	def create
 		@m_process = MProcess.new(m_process_params)
+		if Status.all.empty?
+			default_status = 1
+		else
+			default_status = Status.first.id
+		end
+		@workflow = @m_process.build_workflow(default_status_id: default_status)
 
 		if @m_process.save
       		redirect_to m_processes_settings_path

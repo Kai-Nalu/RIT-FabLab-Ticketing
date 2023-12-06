@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 4) do
+ActiveRecord::Schema[7.0].define(version: 7) do
   create_table "m_processes", force: :cascade do |t|
     t.string "name"
     t.boolean "is_active"
@@ -45,6 +45,34 @@ ActiveRecord::Schema[7.0].define(version: 4) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "workflow_transition_groups", force: :cascade do |t|
+    t.string "name"
+    t.integer "target_status_id"
+    t.integer "workflow_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["workflow_id"], name: "index_workflow_transition_groups_on_workflow_id"
+  end
+
+  create_table "workflow_transitions", force: :cascade do |t|
+    t.integer "initial_status_id"
+    t.integer "workflow_transition_group_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["workflow_transition_group_id"], name: "index_workflow_transitions_on_workflow_transition_group_id"
+  end
+
+  create_table "workflows", force: :cascade do |t|
+    t.integer "default_status_id"
+    t.integer "m_process_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["m_process_id"], name: "index_workflows_on_m_process_id"
+  end
+
   add_foreign_key "machines", "m_processes"
   add_foreign_key "materials", "m_processes"
+  add_foreign_key "workflow_transition_groups", "workflows"
+  add_foreign_key "workflow_transitions", "workflow_transition_groups"
+  add_foreign_key "workflows", "m_processes"
 end
